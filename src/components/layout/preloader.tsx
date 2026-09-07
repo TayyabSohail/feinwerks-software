@@ -38,28 +38,33 @@ export function Preloader() {
     const duration = reduce ? REDUCED_DURATION_MS : DURATION_MS;
     const start = performance.now();
     let frame = 0;
-    let timer = 0;
 
     const tick = (now: number) => {
       const p = Math.min(1, (now - start) / duration);
       setProgress(Math.round(p * 100));
       if (p < 1) {
         frame = requestAnimationFrame(tick);
-        return;
       }
-      timer = window.setTimeout(() => {
-        setVisible(false);
-        document.documentElement.classList.remove('lenis-stopped');
-      }, HOLD_MS);
     };
     frame = requestAnimationFrame(tick);
 
     return () => {
       cancelAnimationFrame(frame);
-      window.clearTimeout(timer);
       document.documentElement.classList.remove('lenis-stopped');
     };
   }, []);
+
+  useEffect(() => {
+    if (progress !== 100) return;
+
+    // The loader must paint its complete state before the exit transition starts.
+    const timer = window.setTimeout(() => {
+      setVisible(false);
+      document.documentElement.classList.remove('lenis-stopped');
+    }, HOLD_MS);
+
+    return () => window.clearTimeout(timer);
+  }, [progress]);
 
   const filled = Math.min(
     BAR_CELLS,
