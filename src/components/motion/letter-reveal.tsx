@@ -21,7 +21,7 @@ interface LetterRevealProps {
   afterPreloader?: boolean;
   /** Zero-based lines whose letters should use the standard reveal. */
   animatedLines?: number[];
-  /** Quick type-like bounce for every character. */
+  /** A single bounce for every character, without a separate reveal motion. */
   typingBounce?: boolean;
   once?: boolean;
 }
@@ -55,7 +55,10 @@ export function LetterReveal({
 
   useEffect(() => {
     if (!afterPreloader) return;
-    if (!document.querySelector('[data-preloader]')) {
+    if (
+      document.documentElement.dataset.preloaderComplete === 'true' ||
+      !document.querySelector('[data-preloader]')
+    ) {
       setPreloaderFinished(true);
       return;
     }
@@ -93,9 +96,7 @@ export function LetterReveal({
                 aria-hidden='true'
                 className={cn(
                   'mr-[0.28em] inline-flex pb-[0.06em] last:mr-0',
-                  wordHasHinge || typingBounce
-                    ? 'overflow-visible'
-                    : 'overflow-hidden',
+                  wordHasHinge || typingBounce ? 'overflow-visible' : 'overflow-hidden',
                   accentWords.includes(w) && 'text-brand-text',
                 )}
                 style={{ perspective: '800px' }}
@@ -111,6 +112,8 @@ export function LetterReveal({
                       variants={{
                         hidden: !reveals || reduce
                           ? { opacity: 0 }
+                          : typingBounce
+                            ? { y: 0, opacity: 1 }
                           : { y: '110%', opacity: 0, rotate: 0 },
                         visible: hangs
                           ? {
@@ -128,13 +131,13 @@ export function LetterReveal({
                             ? { opacity: 1 }
                           : typingBounce
                             ? {
-                                y: [12, -3, 0],
-                                opacity: [0, 1, 1],
+                                y: [0, -12, 0],
+                                opacity: 1,
                                 transition: {
-                                  duration: 0.32,
+                                  duration: 0.5,
                                   ease,
                                   delay: delay + i * stagger,
-                                  times: [0, 0.65, 1],
+                                  times: [0, 0.4, 1],
                                 },
                               }
                           : {

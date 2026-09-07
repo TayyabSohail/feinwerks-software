@@ -21,7 +21,7 @@ export const de: Dictionary = {
   },
   hero: {
     badge: 'Produktentwicklung für Gründer',
-    title: 'Produkte, entwickelt\nvom MVP bis zur Skalierung.',
+    title: 'Produkte, entwickelt\nvom MVP bis zur Skalierung',
     accent: [3, 4, 5, 6],
     body: 'Wir begleiten Gründer beim Aufbau und Wachstum nutzerzentrierter Produkte, mit der Engineering- und Marketing-Expertise, die jede Phase erfordert.',
     primary: 'Angebot anfordern',

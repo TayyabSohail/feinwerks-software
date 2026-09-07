@@ -69,6 +69,7 @@ export function Preloader() {
   return (
     <AnimatePresence
       onExitComplete={() => {
+        document.documentElement.dataset.preloaderComplete = 'true';
         window.dispatchEvent(new Event('feinwerks:preloader-complete'));
       }}
     >
@@ -81,7 +82,7 @@ export function Preloader() {
             duration: reduceMotion ? 0.3 : 0.9,
             ease: [0.76, 0, 0.24, 1],
           }}
-          className='fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink text-white'
+          className='fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black text-white'
           aria-hidden='true'
           data-preloader
         >
@@ -95,13 +96,13 @@ export function Preloader() {
                   initial={
                     reduceMotion
                       ? { opacity: 0 }
-                      : { y: '110%', opacity: 0, rotate: 0 }
+                      : { y: '85%', opacity: 0, rotate: 0 }
                   }
                   animate={
                     hangs
                       ? {
-                          y: ['110%', 0, 0, 0, 0],
-                          rotate: [0, 0, 0, -72, 0],
+                          y: ['85%', 0, 0, 0, 0],
+                          rotate: [0, 0, 0, -45, 0],
                           opacity: [0, 1, 1, 1, 1],
                         }
                       : { y: 0, opacity: 1 }
@@ -114,8 +115,8 @@ export function Preloader() {
                   }}
                   className={
                     hangs
-                      ? 'inline-block origin-top'
-                      : 'inline-block'
+                      ? 'inline-block origin-top text-white'
+                      : 'inline-block text-white'
                   }
                 >
                   {letter}
@@ -126,15 +127,15 @@ export function Preloader() {
 
           {/* Blocky cell bar: filled blocks in brand, empty cells dimmed. */}
           <div className='mt-8 flex w-[min(28rem,84vw)] items-center gap-3 font-mono text-[11px] tracking-[0.12em] sm:gap-4'>
-            <span className='text-white/35'>[</span>
+            <span className='text-white/75'>[</span>
             <span className='flex-1 overflow-hidden whitespace-nowrap text-center text-brand'>
               {'█'.repeat(filled)}
-              <span className='text-white/15'>
+              <span className='text-white/30'>
                 {'░'.repeat(BAR_CELLS - filled)}
               </span>
             </span>
-            <span className='text-white/35'>]</span>
-            <span className='w-12 text-right tabular-nums text-white'>
+            <span className='text-white/75'>]</span>
+            <span className='w-12 text-right tabular-nums text-white/90'>
               {String(progress).padStart(3, '0')}%
             </span>
           </div>
