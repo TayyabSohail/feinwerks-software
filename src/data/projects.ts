@@ -1695,7 +1695,6 @@ export const projects: Project[] = [
     industry: 'Property technology',
     year: '2024',
     anonymised: true,
-    notable: true,
     headline: { value: '3', label: 'platforms from one build' },
     problem:
       'Students live on their phones. A bid placed from a laptop can be outbid while they are in a lecture, and a browser tab does not wake anyone up. Building two native apps from scratch would have doubled the work for a marketplace that already existed.',
@@ -1745,123 +1744,6 @@ export const projects: Project[] = [
           'Store review rejects apps that behave like a website in a frame.',
         solution:
           'Native navigation gestures, safe-area layouts and an offline screen, with the web chrome removed inside the shell.',
-      },
-    ],
-  },
-  {
-    slug: 'unibid-mobile',
-    title: 'UNIBID Mobile App',
-    client: 'UNIBID',
-    tagline: 'Student housing bids, wherever students are',
-    summary:
-      'A native iOS and Android companion for UNIBID’s student housing marketplace.',
-    description:
-      'We extended UNIBID’s real-time student housing marketplace to iOS and Android with a touch-first mobile experience. Students and parents can browse listings, place bids, follow lease progress and reply to messages without needing to return to a desktop browser.',
-    coverImage: '/work/screens/bidnest-mobile-mobile.webp',
-    coverWidth: 780,
-    coverHeight: 1688,
-    platform: 'app',
-    screens: {
-      desktop: '/work/screens/bidnest-desktop.webp',
-      mobile: '/work/screens/bidnest-mobile-mobile.webp',
-      mobileAlt: '/work/screens/bidnest-mobile-alt.webp',
-    },
-    gallery: [
-      {
-        title: 'Student dashboard',
-        caption: 'Bids, lease steps and services in a focused mobile view.',
-        mobile: '/work/screens/bidnest-mobile-dashboard-mobile.webp',
-      },
-      {
-        title: 'Messages',
-        caption:
-          'Landlord and provider conversations, ready from a notification.',
-        mobile: '/work/screens/bidnest-mobile-messages-mobile.webp',
-      },
-      {
-        title: 'Browse listings',
-        caption: 'Search and live listings designed for touch.',
-        mobile: '/work/screens/bidnest-mobile-browse-mobile.webp',
-      },
-    ],
-    accent: '#38bdf8',
-    tech: [
-      'Capacitor',
-      'Next.js',
-      'TypeScript',
-      'TailwindCSS',
-      'ShadCN',
-      'Supabase',
-      'PostgreSQL',
-      'WebSockets',
-      'Stripe',
-      'Twilio',
-      'PostHog',
-    ],
-    techStack: [
-      { category: 'Native shell', tools: ['Capacitor', 'iOS', 'Android'] },
-      { category: 'Frontend', tools: ['Next.js', 'TypeScript'] },
-      { category: 'Styling', tools: ['TailwindCSS', 'ShadCN'] },
-      { category: 'Backend', tools: ['Supabase', 'PostgreSQL'] },
-      { category: 'Real-time', tools: ['WebSockets'] },
-      { category: 'Payments', tools: ['Stripe'] },
-      { category: 'Notifications', tools: ['Twilio'] },
-      { category: 'Analytics', tools: ['PostHog'] },
-    ],
-    category: 'Mobile',
-    capabilities: ['Mobile', 'Full-Stack', 'Cloud & Automation'],
-    services: ['mobile-app-development', 'product-engineering', 'mvp-sprint'],
-    industry: 'Property technology',
-    year: '2025',
-    headline: { value: '2', label: 'app stores from one codebase' },
-    problem:
-      'Housing decisions happen away from a desk, and a browser tab cannot reliably bring students back when a listing changes or a landlord replies.',
-    approach:
-      'We packaged UNIBID’s web platform with Capacitor, then refined the core bidding, messaging and lease flows for mobile navigation, safe areas and notification-driven return journeys.',
-    resultsSummary:
-      'UNIBID’s marketplace now follows students off the desktop. Listings, bids, lease progress and messages are available on iOS and Android from the same product codebase, and a notification brings a student straight back to the conversation or listing that changed.',
-    results: [
-      {
-        value: '2',
-        label: 'app stores from one codebase',
-        detail:
-          'iOS and Android releases delivered by the same product team that ships the web platform.',
-      },
-      {
-        value: '1',
-        label: 'shared codebase across web, iOS and Android',
-        detail:
-          'Capacitor hosts the web application in native shells, so the backend, bidding logic and screens stay shared.',
-      },
-      {
-        value: '0',
-        label: 'missed bids after backgrounding',
-        detail:
-          'The app reconnects and reconciles listing state on resume, so users return to the committed bid history.',
-      },
-    ],
-    architecture:
-      'Capacitor hosts the UNIBID web application in native iOS and Android shells. Supabase and PostgreSQL remain the shared backend, while WebSockets keep bids current and native integrations handle app lifecycle and notification entry points.',
-    keyFeatures: [
-      'Native iOS and Android builds from the shared product codebase',
-      'Live bids and listing updates',
-      'Touch-first listing, messaging and lease flows',
-      'Notification links that open the relevant conversation or listing',
-      'Persistent sessions between app launches',
-      'Safe-area aware mobile layouts',
-    ],
-    challenges: [
-      {
-        challenge:
-          'A bid can change while a user has the app in the background.',
-        solution:
-          'The app reconnects and reconciles listing state when it resumes, so users return to the committed bid history.',
-      },
-      {
-        challenge:
-          'Mobile users need the speed of the web product without browser chrome getting in the way.',
-        solution:
-          'We used a native shell, mobile navigation and safe-area layouts while retaining the proven marketplace workflows.',
       },
     ],
   },

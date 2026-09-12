@@ -288,7 +288,7 @@ export const services: Service[] = [
       'MongoDB',
       'Supabase',
     ],
-    proof: ['unibid-mobile', 'bank-islami-pep', 'bidnest-mobile'],
+    proof: ['bidnest-mobile', 'bank-islami-pep'],
     engagement: {
       timeline: '4-12 weeks to a store release',
       team: 'Mobile lead + 1-2 engineers, design as needed',
