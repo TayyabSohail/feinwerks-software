@@ -91,7 +91,11 @@ export function Preloader() {
           aria-hidden='true'
           data-preloader
         >
-          <div className='flex overflow-hidden font-display text-[clamp(2.5rem,9vw,7rem)] font-bold tracking-[0.08em]'>
+          {/*
+           * Clip only the bottom edge: it masks the letters rising in, while
+           * the hinged last letter can swing past the sides without being cut.
+           */}
+          <div className='flex font-display text-[clamp(2.5rem,9vw,7rem)] font-bold tracking-[0.08em] [clip-path:inset(-100%_-100%_0_-100%)]'>
             {LETTERS.map((letter, index) => {
               const hangs = !reduceMotion && index === HINGE_LETTER_INDEX;
 

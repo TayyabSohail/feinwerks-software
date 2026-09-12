@@ -4,6 +4,7 @@ import {
   Globe,
   Layers,
   Rocket,
+  Smartphone,
   Sparkles,
   Wrench,
 } from 'lucide-react';
@@ -31,6 +32,7 @@ export const SERVICE_ICONS: Record<
   sparkles: Sparkles,
   cloud: Cloud,
   globe: Globe,
+  smartphone: Smartphone,
   rocket: Rocket,
   wrench: Wrench,
 };
@@ -42,7 +44,7 @@ interface ServicesGridProps {
 }
 
 /**
- * The four capabilities (what we build) in a hairline grid with their key
+ * The capabilities (what we build) in a hairline grid with their key
  * deliverables and tools.
  */
 export function ServicesGrid({
@@ -68,7 +70,7 @@ export function ServicesGrid({
         />
         <Stagger
           stagger={0.08}
-          className='mt-5 grid gap-px overflow-hidden border bg-line sm:mt-6 sm:grid-cols-2 lg:grid-cols-4'
+          className='mt-5 grid gap-px overflow-hidden border bg-line sm:mt-6 sm:grid-cols-2 lg:grid-cols-5'
         >
           {capabilities.map((service, index) => (
             <StaggerItem key={service.slug} className='bg-surface'>
@@ -117,7 +119,7 @@ function CapabilityCard({
   return (
     <Link
       href={paths.service(service.slug)}
-      className='group relative flex h-full flex-col bg-surface p-5 transition-colors duration-300 hover:bg-brand-soft/35 sm:min-h-[31rem] sm:p-7'
+      className='group relative flex h-full flex-col bg-surface p-5 transition-colors duration-300 hover:bg-brand-soft/35 sm:min-h-[31rem] sm:p-7 lg:p-5 xl:p-7'
     >
       <div className='flex items-center justify-between'>
         <span className='flex h-10 w-10 items-center justify-center border bg-surface-2 text-ink transition-colors duration-300 group-hover:border-brand group-hover:bg-brand-soft group-hover:text-brand-text'>
@@ -128,7 +130,7 @@ function CapabilityCard({
         </span>
       </div>
 
-      <h4 className='fw-display mt-6 max-w-[13ch] text-[1.65rem] text-ink sm:mt-9 sm:text-[1.8rem]'>
+      <h4 className='fw-display mt-6 max-w-[13ch] text-[1.65rem] text-ink sm:mt-9 sm:text-[1.8rem] lg:text-[1.3rem] xl:text-[1.7rem]'>
         {service.title}
       </h4>
       <p className='mt-3 max-w-[24ch] text-sm leading-relaxed text-muted-foreground'>

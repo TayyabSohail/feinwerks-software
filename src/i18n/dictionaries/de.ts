@@ -367,7 +367,7 @@ export const de: Dictionary = {
     title: 'Entwicklung, auf ein Ergebnis zugeschnitten.',
     accent: [3, 4],
     description:
-      'Vier Kompetenzen und zwei Formen der Zusammenarbeit, die den gesamten Lebenszyklus eines Softwareprodukts abdecken, vom ersten Prototyp bis zum Team, das es betreibt. Jede ist auf ein Ergebnis kalkuliert, nicht auf Stunden, passt in ein Standardpaket oder einen individuellen Umfang und wird von uns nach dem Launch gewartet.',
+      'Fünf Kompetenzen und zwei Formen der Zusammenarbeit, die den gesamten Lebenszyklus eines Softwareprodukts abdecken, vom ersten Prototyp bis zum Team, das es betreibt. Jede ist auf ein Ergebnis kalkuliert, nicht auf Stunden, passt in ein Standardpaket oder einen individuellen Umfang und wird von uns nach dem Launch gewartet.',
     deliverables: 'Was Sie bekommen',
     useCases: 'Typische Projekte',
     stack: 'Werkzeuge, die wir nutzen',

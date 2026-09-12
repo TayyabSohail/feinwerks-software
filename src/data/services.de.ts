@@ -166,6 +166,49 @@ export const servicesDe: Record<string, ServiceTranslation> = {
       },
     ],
   },
+  'mobile-app-development': {
+    title: 'Mobile-App-Entwicklung',
+    tagline: 'iOS- und Android-Apps, aus einer Codebasis in beide Stores.',
+    summary:
+      'Wir bauen die mobile Seite Ihres Produkts: native iOS- und Android-Apps in React Native oder Ihre bestehende Webplattform mit Capacitor verpackt, mit einer gemeinsamen API und einem gemeinsamen Designsystem mit dem Web. Push-Benachrichtigungen, Offline-Betrieb, Store-Einreichung und die folgenden Releases gehören zur Arbeit dazu.',
+    deliverables: [
+      'React-Native-Apps (Expo) für iOS und Android',
+      'Capacitor-Builds einer bestehenden Webplattform',
+      'Push-Benachrichtigungen und Deep Links zum richtigen Screen',
+      'Offline-First-Daten mit Synchronisierung im Hintergrund',
+      'Biometrische Anmeldung und sichere Speicherung auf dem Gerät',
+      'Einreichung und Releases im App Store und bei Google Play',
+    ],
+    useCases: [
+      'Eine mobile Ergänzung zu einem bestehenden Webprodukt',
+      'Interne Apps für Mitarbeitende, die selten am Schreibtisch sind',
+      'Marktplätze, deren Nutzer unterwegs Benachrichtigungen brauchen',
+      'Compliance- und Außendienst-Werkzeuge, die offline funktionieren müssen',
+    ],
+    engagement: {
+      timeline: '4-12 Wochen bis zum Store-Release',
+      team: 'Mobile Lead + 1-2 Engineers, Design nach Bedarf',
+      pricing: 'Festpreis je Release oder monatlicher Retainer',
+      support: 'Store-Updates, OS-Upgrades und Crash-Monitoring',
+    },
+    faqs: [
+      {
+        question: 'Nativ, React Native oder Capacitor: was brauchen wir?',
+        answer:
+          'Wenn Sie bereits ein Webprodukt haben und es schnell auf dem Telefon brauchen, bringt Capacitor es aus derselben Codebasis in beide Stores. Wenn die App das Produkt ist oder viele native Funktionen braucht, bietet React Native ein natives Gefühl und teilt trotzdem Code und API mit dem Web. Wir empfehlen eine Variante nach einer kurzen Prüfung Ihres Produkts.',
+      },
+      {
+        question: 'Übernehmen Sie den App-Store-Prozess?',
+        answer:
+          'Ja. Wir bereiten Einträge, Screenshots und Datenschutzangaben vor, reichen bei beiden Stores ein, reagieren auf Rückfragen der Prüfung und betreuen die folgenden Releases.',
+      },
+      {
+        question: 'Bleiben App und Website synchron?',
+        answer:
+          'Sie teilen eine API und ein Designsystem, sodass eine Funktion oder eine Korrektur aus demselben Repository ins Web und in beide Apps ausgeliefert wird.',
+      },
+    ],
+  },
   'mvp-sprint': {
     title: 'MVP in wenigen Wochen',
     tagline: 'Vom Briefing zum produktionsreifen ersten Release.',

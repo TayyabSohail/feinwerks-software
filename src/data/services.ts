@@ -14,6 +14,7 @@ export type ServiceIcon =
   | 'sparkles'
   | 'cloud'
   | 'globe'
+  | 'smartphone'
   | 'rocket'
   | 'wrench';
 
@@ -253,6 +254,62 @@ export const services: Service[] = [
         question: 'Can our team edit content afterwards?',
         answer:
           'Yes. Sites are built on a headless CMS so case studies, articles and pages are published from an editor, without a developer or a deploy.',
+      },
+    ],
+  },
+  {
+    slug: 'mobile-app-development',
+    kind: 'capability',
+    title: 'Mobile App Development',
+    tagline: 'iOS and Android apps, from one codebase to both stores.',
+    summary:
+      'We build the mobile side of your product: native iOS and Android apps in React Native, or your existing web platform packaged with Capacitor, sharing one API and one design system with the web. Push notifications, offline handling, store submission and the releases that follow are all part of the work.',
+    icon: 'smartphone',
+    deliverables: [
+      'React Native (Expo) apps for iOS and Android',
+      'Capacitor builds of an existing web platform',
+      'Push notifications and deep links into the right screen',
+      'Offline-first data with background sync',
+      'Biometric sign-in and secure on-device storage',
+      'App Store and Google Play submission and releases',
+    ],
+    useCases: [
+      'A mobile companion for an existing web product',
+      'Internal apps for staff who are rarely at a desk',
+      'Marketplaces where users need alerts on the move',
+      'Compliance and field tools that must work offline',
+    ],
+    stack: [
+      'React Native',
+      'Expo',
+      'Capacitor',
+      'TypeScript',
+      'Node.js',
+      'MongoDB',
+      'Supabase',
+    ],
+    proof: ['unibid-mobile', 'bank-islami-pep', 'bidnest-mobile'],
+    engagement: {
+      timeline: '4-12 weeks to a store release',
+      team: 'Mobile lead + 1-2 engineers, design as needed',
+      pricing: 'Fixed price per release, or monthly retainer',
+      support: 'Store updates, OS upgrades and crash monitoring',
+    },
+    faqs: [
+      {
+        question: 'Native, React Native or Capacitor: which do we need?',
+        answer:
+          'If you already have a web product and need it on phones fast, Capacitor ships it to both stores from the same codebase. If the app is the product, or needs heavy native features, React Native gives a native feel while still sharing code and the API with the web. We recommend one after a short review of your product.',
+      },
+      {
+        question: 'Do you handle the app store process?',
+        answer:
+          'Yes. We prepare the listings, screenshots and privacy declarations, submit to both stores, respond to review feedback and manage the releases that follow.',
+      },
+      {
+        question: 'Will the app and the website stay in sync?',
+        answer:
+          'They share one API and one design system, so a feature or a fix ships to the web and to both apps from the same repository.',
       },
     ],
   },

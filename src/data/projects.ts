@@ -31,13 +31,15 @@ export type ProjectCapability =
   | 'Full-Stack'
   | 'AI'
   | 'Cloud & Automation'
-  | 'Web';
+  | 'Web'
+  | 'Mobile';
 
 export const CAPABILITY_ORDER: ProjectCapability[] = [
   'Full-Stack',
   'AI',
   'Cloud & Automation',
   'Web',
+  'Mobile',
 ];
 
 /** Whether the product is shown on a laptop with a phone, or on phones only. */
@@ -1551,8 +1553,8 @@ export const projects: Project[] = [
       { category: 'Auth & reports', tools: ['JWT', 'PDFKit'] },
     ],
     category: 'Mobile',
-    capabilities: ['Full-Stack', 'AI', 'Cloud & Automation'],
-    services: ['product-engineering', 'ai-automation'],
+    capabilities: ['Mobile', 'Full-Stack', 'AI', 'Cloud & Automation'],
+    services: ['mobile-app-development', 'product-engineering', 'ai-automation'],
     industry: 'Banking / Compliance',
     year: '2025',
     featured: 7,
@@ -1684,8 +1686,8 @@ export const projects: Project[] = [
       { category: 'Analytics', tools: ['PostHog'] },
     ],
     category: 'Mobile',
-    capabilities: ['Full-Stack', 'Cloud & Automation'],
-    services: ['product-engineering', 'mvp-sprint'],
+    capabilities: ['Mobile', 'Full-Stack', 'Cloud & Automation'],
+    services: ['mobile-app-development', 'product-engineering', 'mvp-sprint'],
     industry: 'Property technology',
     year: '2024',
     anonymised: true,
@@ -1803,8 +1805,8 @@ export const projects: Project[] = [
       { category: 'Analytics', tools: ['PostHog'] },
     ],
     category: 'Mobile',
-    capabilities: ['Full-Stack', 'Cloud & Automation'],
-    services: ['product-engineering', 'mvp-sprint'],
+    capabilities: ['Mobile', 'Full-Stack', 'Cloud & Automation'],
+    services: ['mobile-app-development', 'product-engineering', 'mvp-sprint'],
     industry: 'Property technology',
     year: '2025',
     headline: { value: '2', label: 'app stores from one codebase' },

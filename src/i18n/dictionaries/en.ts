@@ -361,7 +361,7 @@ export const en = {
     title: 'Engineering, scoped to an outcome.',
     accent: [3, 4],
     description:
-      'Four capabilities and two ways to engage, covering the whole lifecycle of a software product from the first prototype to the team that runs it. Each one is priced for a result, not for hours, fits a standard package or a custom scope, and is maintained by us after launch.',
+      'Five capabilities and two ways to engage, covering the whole lifecycle of a software product from the first prototype to the team that runs it. Each one is priced for a result, not for hours, fits a standard package or a custom scope, and is maintained by us after launch.',
     deliverables: 'What you get',
     useCases: 'Typical engagements',
     stack: 'Tools we use',
