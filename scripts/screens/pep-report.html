@@ -1,0 +1,69 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#059669}
+html.light{--bg:#f3f6f4;--panel:#ffffff;--panel-2:#eaf3ee;--line:rgba(6,45,30,.1);--soft:rgba(6,45,30,.05)}
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:6px 18px 10px;font-weight:600;font-size:14px}
+.hdr .back{width:32px;height:32px;border-radius:50%;background:var(--panel);border:1px solid var(--line);position:relative}
+.hdr .back::after{content:"";position:absolute;left:12px;top:10px;width:8px;height:8px;border-left:2px solid var(--text);border-bottom:2px solid var(--text);transform:rotate(45deg)}
+.body{padding:0 18px 90px!important;gap:12px!important}
+.date{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font-size:22px;font-weight:800;letter-spacing:-.025em;margin-top:2px}
+.sub{font-size:12px}
+.doccard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}
+.doccard .pdf{width:40px;height:48px;border-radius:6px;background:#fee2e2;position:relative;border:1px solid #fecaca}
+.doccard .pdf::after{content:"PDF";position:absolute;left:0;right:0;bottom:6px;text-align:center;font-size:8px;font-weight:800;color:#b91c1c}
+.doccard b{display:block;font-size:12.5px}
+.doccard small{display:block;color:var(--faint);font-size:10.5px;margin-top:2px}
+.doccard .btn{height:32px;padding:0 12px;font-size:11.5px;border-radius:9px}
+.summary{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.summary .card{padding:12px;border-radius:12px}
+.summary .l{font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint)}
+.summary .v{font-size:20px;font-weight:800;letter-spacing:-.02em;margin-top:4px}
+.summary .d{font-size:10.5px;margin-top:3px;color:var(--good)}.summary .d.n{color:var(--bad)}
+.card h3{font-size:13px}
+td{padding:9px 0;font-size:12px}
+th{font-size:9.5px}
+.chg{font-weight:700;font-variant-numeric:tabular-nums}
+.chg.up{color:#b91c1c}.chg.dn{color:#15803d}
+.dist{display:grid;gap:8px}
+.dist div{display:grid;grid-template-columns:64px 1fr 28px;gap:8px;align-items:center;font-size:11.5px}
+.dist .bar{height:8px}
+.dist b{text-align:right;font-size:11px}
+.sent{display:flex;align-items:center;gap:10px;background:var(--panel-2);border-radius:12px;padding:10px 12px;font-size:12px}
+.sent i{width:22px;height:22px;border-radius:50%;background:var(--accent);flex:none;position:relative}
+.sent i::after{content:"";position:absolute;left:8px;top:5px;width:5px;height:9px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg)}
+.sent small{display:block;color:var(--faint);font-size:10.5px}
+</style></head><body>
+<div class="site">
+ <div class="status"><span>9:41</span><div class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></div></div>
+ <div class="hdr"><span class="back"></span><span>Daily risk report</span><span class="pill on"><span class="dot"></span>Final</span></div>
+ <div class="body">
+  <div><div class="date">Generated 07:30 · 12 Sep</div><h1>Risk report #248</h1><div class="sub">Adverse media screening of 1,240 PEP and related-party accounts.</div></div>
+  <div class="doccard"><span class="pdf"></span><div><b>PEP_Risk_Report_2026-09-12.pdf</b><small>6 pages · 9 entities · signed by system</small></div><span class="btn">Share</span></div>
+  <div class="summary">
+   <div class="card"><div class="l">Entities flagged</div><div class="v">9</div><div class="d n">+4 vs yesterday</div></div>
+   <div class="card"><div class="l">Escalated</div><div class="v">2</div><div class="d">Sent to MLRO</div></div>
+   <div class="card"><div class="l">Cleared</div><div class="v">5</div><div class="d">False positives</div></div>
+   <div class="card"><div class="l">Avg. review time</div><div class="v">2m 40s</div><div class="d">per match</div></div>
+  </div>
+  <div class="card">
+   <h3>Score movement <span>Since 11 Sep</span></h3>
+   <table>
+    <tr><th>Entity</th><th class="r">Score</th><th class="r">Change</th></tr>
+    <tr><td><b>Tariq Mehmood Khan</b><div class="faint tiny">Former provincial minister</div></td><td class="r"><b>86</b></td><td class="r chg up">+31</td></tr>
+    <tr><td><b>Saleem Raza Chaudhry</b><div class="faint tiny">Director, import-export group</div></td><td class="r"><b>79</b></td><td class="r chg up">+18</td></tr>
+    <tr><td><b>Nadia Baig</b><div class="faint tiny">Board member, state utility</div></td><td class="r"><b>54</b></td><td class="r chg up">+9</td></tr>
+    <tr><td><b>Farhan Qureshi</b><div class="faint tiny">Former ambassador</div></td><td class="r"><b>41</b></td><td class="r chg dn">-12</td></tr>
+   </table>
+  </div>
+  <div class="card">
+   <h3>Risk distribution <span>1,240 accounts</span></h3>
+   <div class="dist">
+    <div><span>High</span><div class="bar"><i style="width:9%;background:#dc2626"></i></div><b>3</b></div>
+    <div><span>Medium</span><div class="bar"><i style="width:24%;background:#d97706"></i></div><b>27</b></div>
+    <div><span>Low</span><div class="bar"><i style="width:100%"></i></div><b>1,210</b></div>
+   </div>
+  </div>
+  <div class="sent"><i></i><div>Delivered to Compliance and Risk<small>07:31 · email and in-app · 4 recipients</small></div></div>
+ </div>
+ <div class="tabs"><span><b></b>Today</span><span><b></b>Watchlist</span><span class="on"><b></b>Reports</span><span><b></b>Sources</span><span><b></b>Profile</span></div>
+</div></body></html>

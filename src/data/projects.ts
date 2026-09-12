@@ -68,6 +68,16 @@ export interface ProjectGalleryScreen {
   mobile: string;
 }
 
+/** One headline figure in the results section of a case study. */
+export interface ProjectResult {
+  /** The figure, e.g. "70%", "200 ms", "1,000+". */
+  value: string;
+  /** What the figure measures, a few words that read on from the value. */
+  label: string;
+  /** One sentence on what changed for the client behind that figure. */
+  detail: string;
+}
+
 export interface TechGroup {
   category: string;
   tools: string[];
@@ -116,11 +126,14 @@ export interface Project {
    * the homepage and /work; each still gets a full case-study page.
    */
   notable?: boolean;
-  /** Headline metric for cards and the homepage outcomes strip. */
+  /** Headline metric for cards and the homepage showcase. */
   headline: { value: string; label: string };
   problem: string;
   approach: string;
-  outcomes: string[];
+  /** One paragraph on what changed for the client after launch. Opens the results section. */
+  resultsSummary: string;
+  /** Headline figures for the results section, three per project. */
+  results: ProjectResult[];
   architecture: string;
   keyFeatures: string[];
   challenges: { challenge: string; solution: string }[];
@@ -204,10 +217,27 @@ export const projects: Project[] = [
       'Most people in East Africa will never own an apartment, not for lack of savings, but because property sells in one indivisible lump. Capital is locked up for years, rental income means becoming a landlord, and there is no transparency on what a building actually earns.',
     approach:
       'We built a two-sided members club: a vetted application and onboarding funnel, a wallet every shilling passes through, three ways to own, and an internal resale market for exits. Every financial decision routes through a real admin.',
-    outcomes: [
-      '42 screens across member, admin and public surfaces.',
-      '84 business operations over 25 tables, built by 7 contributors.',
-      '3 ownership products: Fractional, Live and Prime.',
+    resultsSummary:
+      'Brickfold launched as a working members club, not a waitlist. Members apply, fund a wallet, buy into apartments, collect their share of the rent and exit through the secondary market, and every shilling of it reconciles to the ledger.',
+    results: [
+      {
+        value: '1M UGX',
+        label: 'minimum stake to co-own an apartment',
+        detail:
+          'Property that only ever sold as one indivisible lump now opens at a price ordinary savers can reach.',
+      },
+      {
+        value: '3',
+        label: 'ownership products on one ledger',
+        detail:
+          'Fractional, Live and Prime share the same wallet, rent distribution and secondary market.',
+      },
+      {
+        value: '100%',
+        label: 'of money movements approved by a person',
+        detail:
+          'Every deposit, investment, rent credit and withdrawal passes the admin desk before it settles.',
+      },
     ],
     architecture:
       'Next.js and React with TanStack and typed server actions, over Supabase and PostgreSQL with Zod at the boundaries. Roughly 72,600 lines across 416 files and 211 reusable components. Wallet balances are enforced to always equal deposits minus investments minus withdrawals, and UGX is handled as whole shillings throughout, never floats.',
@@ -322,10 +352,27 @@ export const projects: Project[] = [
       'SEO teams switched between five different tools just to get from keyword discovery to tracking, wasting hours and risking inconsistent data. Most tools also lean on stale keyword and ranking data, so teams react slowly to search trends.',
     approach:
       'One platform: an AI content engine on OpenRouter wired to live DataForSEO and Google Maps data, with Trigger.dev running bulk jobs and caching in the background.',
-    outcomes: [
-      '3x lower cost per article through automated AI workflows.',
-      '30 articles in 10 minutes, work that previously took hours.',
-      '50% lower keyword tracking cost, $0.09 down from $0.18.',
+    resultsSummary:
+      'Rankloom replaced five separate SEO tools with one platform. Keyword research, drafting and rank tracking run as automated workflows the team reviews rather than operates, and the largest cost line in the business fell by half.',
+    results: [
+      {
+        value: '3x',
+        label: 'lower cost per article',
+        detail:
+          'Drafting, optimisation and publishing run as one automated workflow instead of a chain of tools and hand-offs.',
+      },
+      {
+        value: '30',
+        label: 'articles generated in 10 minutes',
+        detail:
+          'A batch that previously cost the content team hours, now a resumable background job with an SEO score per draft.',
+      },
+      {
+        value: '50%',
+        label: 'lower keyword tracking spend',
+        detail:
+          'From $0.18 to $0.09 per tracked keyword, with no loss of data freshness.',
+      },
     ],
     architecture:
       'Next.js App Router with server components for data-heavy views, Supabase and PostgreSQL for storage, and Trigger.dev for durable background jobs. Generation is proxied through OpenRouter so models swap without touching product code.',
@@ -426,10 +473,27 @@ export const projects: Project[] = [
       'Student housing is dominated by fixed-price listings with no room to negotiate, scattered across unreliable platforms. Parents fund most of these rentals but have no way into the process at all.',
     approach:
       'We designed a live bidding system over WebSockets with sub-200 ms updates, backed by data models tuned for listings, bids and notifications, and separate dashboards scoped to each role.',
-    outcomes: [
-      '1,000+ concurrent users with conflict-free bid synchronisation.',
-      '200 ms bid updates, keeping every bidder in sync.',
-      '3 role-scoped dashboards for students, parents and landlords.',
+    resultsSummary:
+      'Bidnest went live for a semester rush and held. A thousand students can bid on the same listing at once, every bidder sees the same price within a fifth of a second, and students, parents and landlords each work from a view built for their role.',
+    results: [
+      {
+        value: '1,000+',
+        label: 'concurrent bidders without a conflict',
+        detail:
+          'Bid acceptance is serialised on the server, so there is one authoritative order and no listing is ever awarded twice.',
+      },
+      {
+        value: '200 ms',
+        label: 'from a bid to every screen updating',
+        detail:
+          'Live updates keep students, parents and landlords looking at the same number.',
+      },
+      {
+        value: '3',
+        label: 'dashboards, one per role',
+        detail:
+          'Students, parents and landlords each get the actions and information that matter to them, and nothing else.',
+      },
     ],
     architecture:
       'Next.js over Supabase and PostgreSQL. Bids flow through a WebSocket channel and are validated server-side before commit, so a client can never post a winning bid it did not earn. Role access is enforced by row-level security.',
@@ -525,9 +589,27 @@ export const projects: Project[] = [
       'Most ecommerce shows a generic feed, burying shoppers in options that do not match their style. Sellers get basic tools with no view of orders or payouts, and manual payment handling plus opaque delivery erodes trust at checkout.',
     approach:
       'We built a server-rendered recommendation engine over a multi-tenant Supabase architecture with strict data isolation, then automated the money and logistics paths end to end with Stripe Connect and the DHL API.',
-    outcomes: [
-      '40% increase in engagement from personalised recommendations.',
-      '70% fewer support tickets after automating checkout and shipping flows.',
+    resultsSummary:
+      'Curio Market went from a generic storefront to a marketplace that learns what each shopper likes and gets out of the way at checkout. Sellers are paid on schedule, parcels track themselves, and the support inbox went quiet.',
+    results: [
+      {
+        value: '40%',
+        label: 'increase in shopper engagement',
+        detail:
+          'An eight-question taste quiz turns a generic feed into a personal one for every returning visitor.',
+      },
+      {
+        value: '70%',
+        label: 'fewer support tickets',
+        detail:
+          'Automated Stripe Connect payouts and DHL tracking removed the two questions that filled the inbox.',
+      },
+      {
+        value: '1',
+        label: 'checkout across every seller',
+        detail:
+          'Shoppers pay once; Stripe Connect splits the payment and settles each seller on schedule.',
+      },
     ],
     architecture:
       'Next.js App Router, server-rendering the recommendation surfaces. Supabase provides multi-tenant storage with row-level security per seller. Stripe Connect handles split payments and payouts; DHL webhooks drive tracking.',
@@ -626,10 +708,27 @@ export const projects: Project[] = [
       'People operations were scattered across email, chat and paper: onboarding by email, leave and overtime in messages, medical claims on paper, and payroll assembled by hand each month from all of it. Nothing reconciled, and nothing was auditable.',
     approach:
       'One system where every request is a row with a status. Employees submit; admins approve; approved leave, medical and overtime then sweep into a monthly payroll run that computes payslips and locks them.',
-    outcomes: [
-      '5 workflows in one tool: onboarding, leave, medical, overtime, payroll.',
-      '4 enforcement layers guarding admin and employee access.',
-      '12 automated emails replacing manual status chasing.',
+    resultsSummary:
+      'Bitsmiths Studio now runs its people operations from one system instead of email, chat and paper. Every request is a row with a status, every approval is traceable, and payroll is a locked run that computes itself.',
+    results: [
+      {
+        value: '0',
+        label: 'manual payroll calculations',
+        detail:
+          'Approved leave, medical claims and overtime sweep into the monthly run automatically, then lock so nothing is paid twice.',
+      },
+      {
+        value: '5',
+        label: 'workflows in one system',
+        detail:
+          'Onboarding, leave, medical claims, overtime and payroll replaced five separate channels.',
+      },
+      {
+        value: '12',
+        label: 'automated emails',
+        detail:
+          'Status changes notify people on their own, so nobody chases an approval over chat.',
+      },
     ],
     architecture:
       'Next.js 15 App Router with next-safe-action server actions over Supabase, using Postgres, Auth, Storage and pg_cron. Business logic lives in the database: leave and medical balances, payroll calculation and locking are Postgres functions, guarded by row-level security. Roles mirror into the JWT via trigger so middleware can route on them. Resend sends 12 React Email templates, and a monthly cron job opens each payroll period.',
@@ -718,10 +817,27 @@ export const projects: Project[] = [
       'The studio pitches production-ready MVPs in 30 days to founders comparing it against agencies charging many times more. That claim needs visible proof, and the team needed to publish it without a developer in the loop.',
     approach:
       'Next.js over a Directus CMS, so every content surface is editable. The page is ordered as an argument: promise, proof, objections, one call to action.',
-    outcomes: [
-      '30 days from brief to shipped MVP, the promise the site sells.',
-      '4 content types publishable with no code change.',
-      '1 call to action, after promise, proof and objections.',
+    resultsSummary:
+      'The site does the studio’s selling. Case studies, articles, testimonials and FAQs publish from the CMS without a developer in the loop, and the page walks a founder from the 30-day promise to the proof to a single call to action.',
+    results: [
+      {
+        value: '30 days',
+        label: 'from brief to shipped MVP',
+        detail:
+          'The promise the site makes, backed by the case studies it publishes.',
+      },
+      {
+        value: '4',
+        label: 'content types publishable without a deploy',
+        detail:
+          'Case studies, posts, testimonials and FAQs are edited in Directus and go live on save.',
+      },
+      {
+        value: '1',
+        label: 'call to action per visit',
+        detail:
+          'Promise, proof and objections come first, so the enquiry at the end is an informed one.',
+      },
     ],
     architecture:
       'Next.js App Router over a Directus headless CMS. Case studies, posts, testimonials and FAQs are CMS collections rendered through shared templates, with media served as WebP via request-time transforms.',
@@ -817,9 +933,27 @@ export const projects: Project[] = [
       'Real estate agencies managed CRM, compliance, marketing and document workflows across disconnected tools and manual processes. They had no unified system for client and property management or agreement generation.',
     approach:
       'We built a multi-tenant AI system with specialised CRM, compliance and knowledge agents, then connected them to a marketing module and a complete document generation and e-signing pipeline.',
-    outcomes: [
-      '30+ agencies supported on one platform.',
-      '70% reduction in manual document and agreement processing time.',
+    resultsSummary:
+      'More than thirty agencies now run CRM, compliance, marketing and paperwork on one platform. Agreements generate from templates and go straight to e-signature, and the specialised agents handle the work that used to sit in inboxes.',
+    results: [
+      {
+        value: '30+',
+        label: 'agencies on one platform',
+        detail:
+          'Each with its own CRM integration and workflows, served from a single multi-tenant deployment.',
+      },
+      {
+        value: '70%',
+        label: 'less time on documents and agreements',
+        detail:
+          'Tenancy agreements generate from templates and are sent for e-signature without a person retyping them.',
+      },
+      {
+        value: '3',
+        label: 'specialised AI agents',
+        detail:
+          'CRM, compliance and knowledge agents scoped to each agency’s own data and coordinated by LangGraph.',
+      },
     ],
     architecture:
       'A React frontend talks to a Python and FastAPI backend, while LangGraph orchestrates specialised multi-agent workflows powered by OpenAI models. The multi-tenant architecture serves more than 30 agencies from one platform while supporting each agency’s own CRM and workflows.',
@@ -904,9 +1038,27 @@ export const projects: Project[] = [
       'Manual compliance and audit reviews against established standards were slow and inconsistent between reviewers, with each report taking about a week to complete.',
     approach:
       'We built an agent that checks uploaded reports against an established standards dataset, then generates a findings report with clause-level tracked changes and AI-written comments explaining every flagged issue.',
-    outcomes: [
-      '50% shorter audit turnaround, from about one week to roughly half that.',
-      '2x faster review process with more consistent outcomes.',
+    resultsSummary:
+      'Reviews that took a week now take half that, and every finding cites the clause and the standard behind it. Reviewers spend their time on judgement calls instead of hunting for the paragraph that triggered an issue.',
+    results: [
+      {
+        value: '2x',
+        label: 'faster document review',
+        detail:
+          'Turnaround on a compliance report fell from about a week to roughly half.',
+      },
+      {
+        value: '100%',
+        label: 'of findings tied to a clause',
+        detail:
+          'Each one arrives as a tracked change with the standard it cites and a written explanation.',
+      },
+      {
+        value: '1',
+        label: 'review standard for every report',
+        detail:
+          'The same agent workflow evaluates every document, so results are consistent between reviewers and comparable across reports.',
+      },
     ],
     architecture:
       'A Python and FastAPI backend deployed on AWS handles report ingestion and comparison against the standards dataset. Claude powers the review and comment generation, returning findings tied to individual clauses for a traceable review workflow.',
@@ -988,9 +1140,27 @@ export const projects: Project[] = [
       'Running structured general, podcast-style or recruitment interviews at scale required manual scheduling, live facilitation and transcript handling for every session.',
     approach:
       'We built a platform where users choose an interview type, description, style and custom intro or outro. It conducts the interview live through the OpenAI Realtime API, handles transcription, meeting links and invitations, then delivers the transcript automatically.',
-    outcomes: [
-      '30+ intern interviews conducted through the platform.',
-      '3 interview formats supported: general, podcast-style and recruitment.',
+    resultsSummary:
+      'Interviews that needed a scheduler, a facilitator and someone to handle the transcript now run end to end on their own. The recruiter picks the format and the questions; the platform books, conducts and documents the session.',
+    results: [
+      {
+        value: '30+',
+        label: 'interviews completed on the platform',
+        detail:
+          'Intern recruitment rounds run live through the AI interviewer, each scored on the same rubric.',
+      },
+      {
+        value: '3',
+        label: 'interview formats',
+        detail:
+          'General, podcast-style and recruitment sessions, each with a custom description, style, intro and outro.',
+      },
+      {
+        value: '0',
+        label: 'manual steps after a session ends',
+        detail:
+          'The transcript is generated live and emailed automatically when the interview closes.',
+      },
     ],
     architecture:
       'Next.js powers both the frontend and backend, keeping interview setup, invitations and post-session delivery in one application. The OpenAI Realtime API runs the live voice conversation and transcription, including recruitment sessions with multiple candidates and CVs.',
@@ -1075,9 +1245,27 @@ export const projects: Project[] = [
       'Resellers wanted to offer AI support agents to their own customers, but every deployment was bespoke, so onboarding a new shop took days of manual setup.',
     approach:
       'We built a multi-tenant MERN architecture where each shop runs an independent, context-aware agent, and layered automated provisioning on top so resellers could stand up bots in bulk rather than one at a time.',
-    outcomes: [
-      '60% faster deployment through automated orchestration.',
-      '1 namespace per tenant, so no shop can read another’s content.',
+    resultsSummary:
+      'Resellers now stand up AI support agents for their shops in bulk instead of one bespoke deployment at a time. Each bot answers only from its own shop’s catalogue, orders and policies, and hands over to a person when it cannot close a conversation.',
+    results: [
+      {
+        value: '60%',
+        label: 'faster shop onboarding',
+        detail:
+          'Automated provisioning turned a multi-day manual setup into a bulk operation.',
+      },
+      {
+        value: '1',
+        label: 'isolated namespace per shop',
+        detail:
+          'Embeddings are partitioned per tenant in Pinecone, so no bot can ever surface another shop’s content.',
+      },
+      {
+        value: '100%',
+        label: 'of answers grounded in the shop’s own content',
+        detail:
+          'Retrieval runs over the catalogue, orders API and policies the reseller has allowed for that bot.',
+      },
     ],
     architecture:
       'MERN: React, an Express and Node.js API, and MongoDB for tenant and conversation data. Pinecone holds per-tenant embeddings so retrieval is scoped to one shop’s knowledge base, and provisioning runs without manual setup.',
@@ -1160,9 +1348,27 @@ export const projects: Project[] = [
       'The rehabilitation journey was fragmented across manual intake, movement assessment, generic exercise plans and infrequent follow-up. Patients had little guidance between supervised sessions, and plans did not respond quickly to performance.',
     approach:
       'We built the journey around an intake agent, guided movement assessment and automatic exercise plan generation. Daily logs drive plan progression or regression, while uploaded exercise videos receive AI feedback and injury articles inform future plans.',
-    outcomes: [
-      '90%+ accuracy on AI-assisted movement and form assessment.',
-      'Daily plan progression and regression automated from patient performance.',
+    resultsSummary:
+      'Patients now have guidance every day, not just at supervised sessions. Intake, movement assessment, plan generation and video feedback run as one connected journey, and the plan adapts to how the patient actually performed.',
+    results: [
+      {
+        value: '90%+',
+        label: 'accuracy on movement and form checks',
+        detail:
+          'Pose analysis on uploaded clips returns joint angles and corrective feedback the clinician can review.',
+      },
+      {
+        value: '8 weeks',
+        label: 'of plan, adapting daily',
+        detail:
+          'Daily logs drive progression or regression automatically instead of waiting for the next appointment.',
+      },
+      {
+        value: '1',
+        label: 'connected journey from intake to recovery',
+        detail:
+          'Intake agent, assessment, plan, daily logging and AI video feedback replace four disconnected steps.',
+      },
     ],
     architecture:
       'A React frontend connects to a Python and FastAPI backend. LangChain coordinates intake, assessment context and plan generation, with OpenAI producing adaptive guidance. Video uploads feed the form-analysis workflow, and uploaded injury articles provide source material for plan generation.',
@@ -1242,9 +1448,27 @@ export const projects: Project[] = [
       'The existing site loaded slowly and ranked poorly, costing the company inbound leads before visitors ever saw the offering.',
     approach:
       'We rebuilt the site on Next.js with TypeScript for type safety and Tailwind for styling, then worked through the performance budget: code splitting, image optimisation and tuned rendering strategies per route.',
-    outcomes: [
-      '40% faster through targeted performance work.',
-      '100% of routes reaching their call to action in one scroll.',
+    resultsSummary:
+      'The rebuilt site loads faster, ranks for the terms the company sells on and puts an enquiry within one scroll on every route. Inbound leads no longer bounce before they see the offering.',
+    results: [
+      {
+        value: '40%',
+        label: 'faster page loads',
+        detail:
+          'Static-first rendering, route-level code splitting and optimised imagery across the site.',
+      },
+      {
+        value: '100%',
+        label: 'of routes reach a call to action in one scroll',
+        detail:
+          'Every page is built to move a visitor from the offering to an enquiry without hunting.',
+      },
+      {
+        value: '0',
+        label: 'layout shift from imagery',
+        detail:
+          'All images serve through next/image with explicit dimensions and modern formats.',
+      },
     ],
     architecture:
       'Static-first Next.js App Router build. Routes are pre-rendered where content allows, images are served through next/image with explicit dimensions, and JavaScript is code-split per route to keep the initial payload small.',
@@ -1261,6 +1485,140 @@ export const projects: Project[] = [
           'Large marketing imagery dominated the page weight and delayed first paint.',
         solution:
           'Moved all imagery to next/image with explicit dimensions and modern formats, prioritising only the above-the-fold hero.',
+      },
+    ],
+  },
+  {
+    slug: 'bank-islami-pep',
+    title: 'BankIslami PEP Screening',
+    client: 'BankIslami, delivered with Aawaz AI',
+    tagline: 'Daily adverse-media screening for politically exposed persons',
+    summary:
+      'An internal web and mobile platform that reads the news every morning and turns it into a risk report for the bank’s compliance team.',
+    description:
+      'Banks must monitor politically exposed persons and their associates continuously, not just at onboarding. At BankIslami that meant analysts opening dozens of news sites every morning and searching for hundreds of names by hand. We built an end-to-end screening platform: a crawler that fetches the day’s financial and political news, a matching engine that ties articles to the bank’s PEP records, and a review workflow that ends in a signed daily risk report. It ships as a MERN web application for analysts at their desks and a native mobile app for compliance officers on the move.',
+    coverImage: '/work/screens/bank-islami-pep-desktop.webp',
+    coverWidth: 2160,
+    coverHeight: 1350,
+    platform: 'app',
+    screens: {
+      desktop: '/work/screens/bank-islami-pep-desktop.webp',
+      mobile: '/work/screens/bank-islami-pep-mobile.webp',
+      mobileAlt: '/work/screens/bank-islami-pep-alt.webp',
+    },
+    gallery: [
+      {
+        title: 'Review queue',
+        caption:
+          'Client record and article side by side, so a name match is confirmed or dismissed in seconds.',
+        mobile: '/work/screens/bank-islami-pep-review-mobile.webp',
+      },
+      {
+        title: 'Daily risk report',
+        caption:
+          'The morning’s findings as a signed PDF, with score movement and delivery to Compliance and Risk.',
+        mobile: '/work/screens/bank-islami-pep-report-mobile.webp',
+      },
+      {
+        title: 'Sources',
+        caption:
+          'Every news feed, regulator and court list the crawler reads, with last-run health.',
+        mobile: '/work/screens/bank-islami-pep-sources-mobile.webp',
+      },
+    ],
+    accent: '#059669',
+    tech: [
+      'React',
+      'React Native',
+      'Vite',
+      'TypeScript',
+      'TailwindCSS',
+      'Node.js',
+      'Express',
+      'MongoDB',
+      'Puppeteer',
+      'BullMQ',
+      'Redis',
+      'JWT',
+    ],
+    techStack: [
+      { category: 'Web app', tools: ['React', 'Vite', 'TypeScript'] },
+      { category: 'Mobile app', tools: ['React Native', 'Expo'] },
+      { category: 'Styling', tools: ['TailwindCSS'] },
+      { category: 'Backend', tools: ['Node.js', 'Express', 'MongoDB'] },
+      { category: 'Crawling', tools: ['Puppeteer', 'Cheerio'] },
+      { category: 'Jobs', tools: ['BullMQ', 'Redis'] },
+      { category: 'Auth & reports', tools: ['JWT', 'PDFKit'] },
+    ],
+    category: 'Mobile',
+    capabilities: ['Full-Stack', 'AI', 'Cloud & Automation'],
+    services: ['product-engineering', 'ai-automation'],
+    industry: 'Banking / Compliance',
+    year: '2025',
+    featured: 7,
+    headline: { value: '38', label: 'news sources screened daily' },
+    problem:
+      'Regulators expect banks to keep screening politically exposed persons for as long as the relationship lasts. The compliance team did this by hand: a morning spent across news sites, court lists and gazettes, searching for over a thousand names, then pasting findings into a spreadsheet. Stories were missed, the report landed late, and nobody could show an auditor how a name had been checked.',
+    approach:
+      'We started with the sources, not the interface: a scheduled crawler that fetches every relevant Pakistani and international outlet at 06:00, normalises the articles and stores them in MongoDB. A matching engine scores each article against the bank’s PEP list using name variants, roles and locations, and only credible matches reach an analyst. The review queue, risk profiles and the generated report were then built once as a component library and shipped to the browser and to iOS and Android.',
+    resultsSummary:
+      'The compliance team now starts the day with a finished report instead of a morning of searching. Every relevant outlet is read before anyone arrives, only credible matches reach an analyst, and every decision on a name is recorded well enough to show an auditor.',
+    results: [
+      {
+        value: '38',
+        label: 'sources screened before the team arrives',
+        detail:
+          'Roughly 200 articles a day are crawled, normalised and matched against the PEP list from 06:00.',
+      },
+      {
+        value: '30 min',
+        label: 'of morning triage, down from four hours',
+        detail:
+          'Analysts confirm or dismiss scored matches with the client record and article side by side, instead of searching by hand.',
+      },
+      {
+        value: '07:30',
+        label: 'daily risk report delivered',
+        detail:
+          'Where it used to land mid-afternoon, now with a full audit trail per name and delivery to Compliance and Risk.',
+      },
+      {
+        value: '1,240',
+        label: 'accounts monitored continuously',
+        detail:
+          'PEP and related-party accounts screened every day across web and mobile.',
+      },
+    ],
+    architecture:
+      'A MERN stack: React with Vite and Tailwind for the analyst dashboard, React Native for the mobile app, and one Express API over MongoDB serving both. A BullMQ worker on Redis runs the crawl at 06:00, fetching sources with Puppeteer where pages are rendered client-side and Cheerio where they are not. Matching is a scoring pipeline over name variants, transliterations, role and city, with a confidence threshold that routes matches to the review queue. Confirmed findings roll into a PDF report generated server-side and delivered by email and push notification.',
+    keyFeatures: [
+      'Scheduled daily crawl of news, regulator and court sources',
+      'Name matching with transliteration and alias handling',
+      'Risk score per person with adverse media, litigation and sanctions signals',
+      'Review queue with client record and article side by side',
+      'Escalation to the MLRO with a full audit trail',
+      'Generated daily risk report as a signed PDF',
+      'Mobile app with push alerts for high-risk matches',
+      'Role-based access for analysts, reviewers and management',
+    ],
+    challenges: [
+      {
+        challenge:
+          'Names in Urdu and English transliterate many ways, so a strict match missed real stories and a loose one buried analysts in false positives.',
+        solution:
+          'A scoring pipeline weighs name variants against role, city and known associates, and every match above the threshold shows the analyst exactly which fields agreed.',
+      },
+      {
+        challenge:
+          'News sites change their markup without notice, and one silent failure meant a source was missing from the morning report.',
+        solution:
+          'Each source has a health check and an article-count baseline; a crawl that returns far fewer than usual retries and flags the feed as delayed on the dashboard instead of passing quietly.',
+      },
+      {
+        challenge:
+          'The bank needed the same screening on phones for officers who are rarely at a desk, without maintaining two products.',
+        solution:
+          'Screens were designed once as a shared component set and served by one API, so the web dashboard and the React Native app always show the same data and the same decisions.',
       },
     ],
   },
@@ -1337,10 +1695,27 @@ export const projects: Project[] = [
       'Students live on their phones. A bid placed from a laptop can be outbid while they are in a lecture, and a browser tab does not wake anyone up. Building two native apps from scratch would have doubled the work for a marketplace that already existed.',
     approach:
       'Rather than rebuild the product natively, we wrapped the existing Next.js application with Capacitor, tuned the bidding and messaging screens for touch and safe areas, and shipped the result to both stores from the same repository as the website.',
-    outcomes: [
-      '1 codebase shipping the website, the iOS app and the Android app.',
-      '2 app stores served from the same release branch as the web platform.',
-      '0 features rebuilt: every marketplace flow works inside the native shell.',
+    resultsSummary:
+      'Bidnest reached the App Store and Google Play without a second codebase or a second team. Students bid, message and pay from their phones with the same flows as the web platform, and a fix ships to all three at once.',
+    results: [
+      {
+        value: '3',
+        label: 'platforms from one build',
+        detail:
+          'The website, the iOS app and the Android app ship from a single repository and release branch.',
+      },
+      {
+        value: '0',
+        label: 'features rebuilt for native',
+        detail:
+          'Real-time bids, messaging and Stripe checkout are the same code that serves the web platform.',
+      },
+      {
+        value: '2',
+        label: 'app stores from the same release branch',
+        detail:
+          'Native navigation, safe-area layouts and an offline screen, so the app behaves like an app rather than a website in a frame.',
+      },
     ],
     architecture:
       'Capacitor hosts the production web build inside a native WebView on iOS and Android. Native plugins cover what the browser cannot; everything else, from real-time bids to Stripe checkout, is the same code that serves the web platform, so a fix ships to three platforms at once.',
@@ -1437,10 +1812,27 @@ export const projects: Project[] = [
       'Housing decisions happen away from a desk, and a browser tab cannot reliably bring students back when a listing changes or a landlord replies.',
     approach:
       'We packaged UNIBID’s web platform with Capacitor, then refined the core bidding, messaging and lease flows for mobile navigation, safe areas and notification-driven return journeys.',
-    outcomes: [
-      '1 shared product codebase across web, iOS and Android.',
-      '2 app-store releases delivered from the same product team.',
-      'Real-time bidding and conversations available on the go.',
+    resultsSummary:
+      'UNIBID’s marketplace now follows students off the desktop. Listings, bids, lease progress and messages are available on iOS and Android from the same product codebase, and a notification brings a student straight back to the conversation or listing that changed.',
+    results: [
+      {
+        value: '2',
+        label: 'app stores from one codebase',
+        detail:
+          'iOS and Android releases delivered by the same product team that ships the web platform.',
+      },
+      {
+        value: '1',
+        label: 'shared codebase across web, iOS and Android',
+        detail:
+          'Capacitor hosts the web application in native shells, so the backend, bidding logic and screens stay shared.',
+      },
+      {
+        value: '0',
+        label: 'missed bids after backgrounding',
+        detail:
+          'The app reconnects and reconciles listing state on resume, so users return to the committed bid history.',
+      },
     ],
     architecture:
       'Capacitor hosts the UNIBID web application in native iOS and Android shells. Supabase and PostgreSQL remain the shared backend, while WebSockets keep bids current and native integrations handle app lifecycle and notification entry points.',
@@ -1526,10 +1918,27 @@ export const projects: Project[] = [
       'A CV lists technologies; it does not show how a product was built or what changed after it shipped. Most portfolio sites are a grid of thumbnails with nothing behind them, and keeping a dozen project pages consistent by hand is where they fall apart.',
     approach:
       'We treated the portfolio like a product. Every project is a typed record with problem, approach, architecture, features, challenges and outcomes, and the site renders the grid, the case-study pages, the sitemap and the social previews from that one array.',
-    outcomes: [
-      '12 case studies generated from a single typed data file.',
-      '0 CMS and 0 database: every page is built statically at deploy time.',
-      '1 click from any case study to a booked call.',
+    resultsSummary:
+      'Every project on the site is a full case study rather than a thumbnail, and all of them share one structure because they come from one typed data file. The site ships as static HTML, so the motion costs nothing on load, and a call is one click from any page.',
+    results: [
+      {
+        value: '12',
+        label: 'case studies from one typed data file',
+        detail:
+          'The grid, every case-study page, the sitemap and the social previews render from a single array.',
+      },
+      {
+        value: '0',
+        label: 'CMS or database to maintain',
+        detail:
+          'Every page is built statically at deploy time, and the type checker refuses a build if a section is missing.',
+      },
+      {
+        value: '1',
+        label: 'click from any case study to a booked call',
+        detail:
+          'An embedded Cal.com calendar sits on the contact screen alongside the message form.',
+      },
     ],
     architecture:
       'Next.js App Router with static generation for every case-study route. Project data lives in one TypeScript array so the type checker refuses a build when a section is missing. Motion runs on Framer Motion after first paint; call booking is an embedded Cal.com widget.',

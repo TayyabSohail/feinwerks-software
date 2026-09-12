@@ -1,0 +1,53 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#059669}
+html.light{--bg:#f3f6f4;--panel:#ffffff;--panel-2:#eaf3ee;--line:rgba(6,45,30,.1);--soft:rgba(6,45,30,.05)}
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:6px 18px 10px}
+.hdr h1{font-size:22px;font-weight:800;letter-spacing:-.025em}
+.hdr .sub{font-size:11.5px;margin-top:1px}
+.body{padding:0 18px 90px!important;gap:12px!important}
+.prog{display:flex;align-items:center;gap:12px;font-size:11.5px;color:var(--muted)}
+.prog .bar{flex:1;height:8px}
+.prog b{color:var(--text);font-variant-numeric:tabular-nums}
+.match{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;gap:12px}
+.match .head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.match .head b{font-size:14px;display:block}
+.match .head small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.conf{text-align:right;flex:none}
+.conf b{font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--accent)}
+.conf.w b{color:#b45309}
+.conf small{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pair div{background:var(--panel-2);border-radius:10px;padding:9px 10px;font-size:11.5px;line-height:1.4}
+.pair span{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin-bottom:3px}
+.pair b{font-size:12px}
+.pair i{font-style:normal;background:#fef08a;padding:0 2px;border-radius:2px}
+.art{border-left:3px solid var(--accent);padding:2px 0 2px 10px;font-size:12px;line-height:1.45;color:var(--muted)}
+.art b{color:var(--text);display:block;margin-bottom:2px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.acts .btn{height:40px;border-radius:11px;font-size:12.5px}
+.acts .btn.no{background:var(--panel-2);color:var(--text)}
+.done{opacity:.55}
+</style></head><body>
+<div class="site">
+ <div class="status"><span>9:41</span><div class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></div></div>
+ <div class="hdr"><div><h1>Review queue</h1><div class="sub">Confirm or dismiss name matches from today</div></div><span class="pill"><span class="dot red"></span>4 left</span></div>
+ <div class="body">
+  <div class="prog"><span>Reviewed</span><div class="bar"><i style="width:56%"></i></div><b>5 / 9</b></div>
+  <div class="match">
+   <div class="head"><div><b>Nadia Baig</b><small>Board member, state utility · Related party of CIF 00219004</small></div><div class="conf"><b>82%</b><small>Match</small></div></div>
+   <div class="pair"><div><span>Client record</span><b>Nadia <i>Baig</i></b><br>DOB 1971 · Lahore<br>Board member, LESCO</div><div><span>In article</span><b>Ms <i>Baig</i>, board member</b><br>Lahore · procurement audit<br>The News · today</div></div>
+   <div class="art"><b>Audit objections raised over utility procurement</b>Auditor General flags Rs 1.2bn in procurement without competitive bidding. Board members, including Ms Baig, asked to respond within 14 days.</div>
+   <div class="acts"><span class="btn">Confirm match</span><span class="btn no">Not the same person</span></div>
+  </div>
+  <div class="match">
+   <div class="head"><div><b>Farhan Qureshi</b><small>Former ambassador · PEP tier 2</small></div><div class="conf w"><b>61%</b><small>Match</small></div></div>
+   <div class="pair"><div><span>Client record</span><b>Farhan <i>Qureshi</i></b><br>DOB 1958 · Islamabad<br>Foreign service, retired</div><div><span>In article</span><b>F. <i>Qureshi</i>, businessman</b><br>Karachi · textile exports<br>Business Recorder · today</div></div>
+   <div class="art"><b>Textile exporter seeks bail in tax case</b>Different city and occupation. Two other people named Qureshi in the article.</div>
+   <div class="acts"><span class="btn">Confirm match</span><span class="btn no">Not the same person</span></div>
+  </div>
+  <div class="match done">
+   <div class="head"><div><b>Ayesha Durrani</b><small>Senior civil servant</small></div><span class="tag g">Cleared 09:12</span></div>
+  </div>
+ </div>
+ <div class="tabs"><span><b></b>Today</span><span class="on"><b></b>Watchlist</span><span><b></b>Reports</span><span><b></b>Sources</span><span><b></b>Profile</span></div>
+</div></body></html>

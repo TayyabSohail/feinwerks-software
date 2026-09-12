@@ -132,6 +132,20 @@ const SOURCES = {
       about: 'https://www.newweborder.us/about',
     },
   },
+  /*
+   * App project with a web dashboard too: phones for the hero and gallery,
+   * plus one `desktop` capture used wherever the product sits on a laptop.
+   */
+  'bank-islami-pep': {
+    desktop: 'pep-dashboard.html',
+    phones: {
+      main: 'pep-feed.html',
+      alt: 'pep-profile.html',
+      review: 'pep-review.html',
+      report: 'pep-report.html',
+      sources: 'pep-sources.html',
+    },
+  },
   /* App project: phone screens only. `main` and `alt` are the hero phones. */
   'bidnest-mobile': {
     phones: {
@@ -279,6 +293,13 @@ for (const [slug, source] of Object.entries(SOURCES)) {
             ? `${slug}-alt.webp`
             : `${slug}-${id}-mobile.webp`;
       await save(await capture(resolveScreen(entry), 'mobile'), file, ...PHONE);
+    }
+    if (source.desktop) {
+      await save(
+        await capture(resolveScreen(source.desktop), 'desktop'),
+        `${slug}-desktop.webp`,
+        ...DESKTOP,
+      );
     }
   } else {
     for (const [id, entry] of Object.entries(source.screens)) {

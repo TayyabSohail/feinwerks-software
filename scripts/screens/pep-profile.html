@@ -1,0 +1,54 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#059669}
+html.light{--bg:#f3f6f4;--panel:#ffffff;--panel-2:#eaf3ee;--line:rgba(6,45,30,.1);--soft:rgba(6,45,30,.05)}
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:6px 18px 10px;font-weight:600;font-size:14px}
+.hdr .back{width:32px;height:32px;border-radius:50%;background:var(--panel);border:1px solid var(--line);position:relative}
+.hdr .back::after{content:"";position:absolute;left:12px;top:10px;width:8px;height:8px;border-left:2px solid var(--text);border-bottom:2px solid var(--text);transform:rotate(45deg)}
+.body{padding:0 18px 90px!important;gap:12px!important}
+.who{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
+.who .avatar{width:56px;height:56px;background:linear-gradient(135deg,#065f46,#14b8a6)}
+.who h1{font-size:20px;font-weight:800;letter-spacing:-.025em}
+.who small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+.riskcard{background:#111827;color:#fff;border-radius:18px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.ring{width:96px;height:96px;background:conic-gradient(#ef4444 0 86%,rgba(255,255,255,.12) 86% 100%)}
+.ring::after{background:#111827}
+.ring b{font-size:26px;color:#fff}.ring span{color:rgba(255,255,255,.55)}
+.riskcard .rows{display:grid;gap:8px;font-size:11.5px}
+.riskcard .rows div{display:flex;justify-content:space-between;color:rgba(255,255,255,.7)}
+.riskcard .rows b{color:#fff}
+.riskcard .rows .up{color:#fca5a5}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.grid .card{padding:10px;border-radius:12px}
+.grid .l{font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint)}
+.grid .v{font-size:14px;font-weight:800;margin-top:4px}
+.card h3{font-size:13px}
+.news>div{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.news>div:last-child{border-bottom:0}
+.news i{width:8px;height:8px;border-radius:50%;margin-top:5px;background:#dc2626}
+.news i.w{background:#d97706}.news i.g{background:#059669}
+.news b{font-size:12.5px;display:block;line-height:1.35}
+.news small{color:var(--faint);font-size:10.5px;display:block;margin-top:3px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.acts .btn{height:44px;border-radius:12px;font-size:13px}
+.acts .btn.esc{background:#dc2626;color:#fff}
+</style></head><body>
+<div class="site">
+ <div class="status"><span>9:41</span><div class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></div></div>
+ <div class="hdr"><span class="back"></span><span>Risk profile</span><span class="tag r">High</span></div>
+ <div class="body">
+  <div class="who"><span class="avatar"></span><div><h1>Tariq Mehmood Khan</h1><small>Former provincial minister · PEP tier 1 · CIF 00482913</small></div></div>
+  <div class="riskcard"><div class="ring"><div><b>86</b><span>Risk</span></div></div><div class="rows"><div>Adverse media<b class="up">+31 today</b></div><div>Sanctions lists<b>Clear</b></div><div>Litigation<b>1 open</b></div><div>Last reviewed<b>3 Sep</b></div></div></div>
+  <div class="grid"><div class="card"><div class="l">Mentions 30d</div><div class="v">14</div></div><div class="card"><div class="l">Sources</div><div class="v">6</div></div><div class="card"><div class="l">Associates</div><div class="v">3</div></div></div>
+  <div class="card">
+   <h3>News timeline <span>Auto-matched</span></h3>
+   <div class="news">
+    <div><i></i><div><b>NAB widens inquiry into provincial land allotments</b><small>Dawn · today 07:10 · confidence 96%</small></div></div>
+    <div><i></i><div><b>Two former ministers summoned over housing scheme</b><small>Express Tribune · today 06:40 · confidence 91%</small></div></div>
+    <div><i class="w"></i><div><b>Opposition demands audit of 2022 development funds</b><small>The News · 9 Sep · confidence 74%</small></div></div>
+    <div><i class="g"></i><div><b>Minister inaugurates rural road project</b><small>Business Recorder · 28 Aug · cleared</small></div></div>
+   </div>
+  </div>
+  <div class="acts"><span class="btn esc">Escalate to MLRO</span><span class="btn ghost">Mark reviewed</span></div>
+ </div>
+ <div class="tabs"><span><b></b>Today</span><span class="on"><b></b>Watchlist</span><span><b></b>Reports</span><span><b></b>Sources</span><span><b></b>Profile</span></div>
+</div></body></html>

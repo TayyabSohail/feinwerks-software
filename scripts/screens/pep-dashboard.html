@@ -1,0 +1,79 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#059669}
+html.light{--bg:#f3f6f4;--panel:#ffffff;--panel-2:#eaf3ee;--line:rgba(6,45,30,.1);--soft:rgba(6,45,30,.05)}
+.brand i{background:linear-gradient(135deg,#047857,#0d9488)}
+.brand small{display:block;font-size:9.5px;color:var(--faint);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
+.kpi .v{font-weight:800}
+.kpi .v.r{color:#b91c1c}
+.score{width:32px;height:32px;border-radius:50%;display:inline-grid;place-items:center;font-weight:800;font-size:12px}
+.score.hi{background:#fee2e2;color:#b91c1c}.score.md{background:#fef3c7;color:#b45309}.score.lo{background:#dcfce7;color:#15803d}
+td{padding:10px 12px 10px 0}th{padding-right:12px}
+td:first-child b{white-space:nowrap}
+td:first-child{padding-right:14px}
+.srcs>div{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:12px}
+.srcs>div:last-child{border-bottom:0}
+.srcs .fav{width:24px;height:24px;border-radius:6px;color:#fff;font-size:9px;font-weight:800;display:grid;place-items:center;flex:none}
+.srcs span.n{margin-left:auto;color:var(--faint);font-size:11px}
+.ring{width:104px;height:104px}
+.rep{display:flex;gap:16px;align-items:center}
+.rep .stat{padding:5px 0;font-size:12px}
+.sched{display:flex;align-items:center;gap:10px;font-size:12px;background:var(--panel-2);border-radius:8px;padding:9px 12px}
+.sched small{display:block;color:var(--faint);font-size:10.5px}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i><div>PEP Screening<small>BankIslami · Compliance</small></div></div>
+  <div class="lab">Screening</div>
+  <div class="nav on"><b></b>Today<span class="cnt">9</span></div>
+  <div class="nav"><b></b>Review queue<span class="cnt">4</span></div>
+  <div class="nav"><b></b>Watchlist</div>
+  <div class="nav"><b></b>Reports</div>
+  <div class="lab">Data</div>
+  <div class="nav"><b></b>Sources<span class="cnt">38</span></div>
+  <div class="nav"><b></b>Customer records</div>
+  <div class="nav"><b></b>Audit log</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Compliance analyst<small>Head office · Karachi</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="top"><div class="crumb">Screening / <b>Today</b> · Friday, 12 September</div><div class="right"><span class="pill on"><span class="dot"></span>Crawl finished 06:52</span><span class="btn">Generate report</span></div></div>
+  <div class="content">
+   <div class="kpis">
+    <div class="card kpi"><div class="l">Sources scanned</div><div class="v">38 / 38</div><div class="d">2 delayed, recovered</div></div>
+    <div class="card kpi"><div class="l">Articles processed</div><div class="v">214</div><div class="d m">18 min end to end</div></div>
+    <div class="card kpi"><div class="l">Name matches</div><div class="v">9</div><div class="d m">of 1,240 accounts</div></div>
+    <div class="card kpi"><div class="l">High risk</div><div class="v r">3</div><div class="d n">+2 vs yesterday</div></div>
+   </div>
+   <div class="grid2">
+    <div class="card">
+     <h3>New matches <span>Sorted by risk score</span></h3>
+     <table>
+      <tr><th>Entity</th><th>Role</th><th>Signal</th><th class="r">Score</th><th class="r">Status</th></tr>
+      <tr><td><b>Tariq Mehmood Khan</b><div class="faint small">PEP tier 1 · CIF 00482913</div></td><td>Former provincial minister</td><td><span class="tag r">Adverse media</span></td><td class="r"><span class="score hi">86</span></td><td class="r"><span class="tag r">Escalated</span></td></tr>
+      <tr><td><b>Saleem Raza Chaudhry</b><div class="faint small">Corporate · CIF 00517220</div></td><td>Director, import-export group</td><td><span class="tag r">Litigation</span></td><td class="r"><span class="score hi">79</span></td><td class="r"><span class="tag w">In review</span></td></tr>
+      <tr><td><b>Nadia Baig</b><div class="faint small">Related party · CIF 00219004</div></td><td>Board member, state utility</td><td><span class="tag w">Watch</span></td><td class="r"><span class="score md">54</span></td><td class="r"><span class="tag w">In review</span></td></tr>
+      <tr><td><b>Farhan Qureshi</b><div class="faint small">PEP tier 2 · CIF 00103877</div></td><td>Former ambassador</td><td><span class="tag n">Name only</span></td><td class="r"><span class="score md">41</span></td><td class="r"><span class="tag n">Pending</span></td></tr>
+      <tr><td><b>Ayesha Durrani</b><div class="faint small">PEP tier 3 · CIF 00340118</div></td><td>Senior civil servant</td><td><span class="tag g">Routine</span></td><td class="r"><span class="score lo">22</span></td><td class="r"><span class="tag g">Cleared</span></td></tr>
+      <tr><td><b>Imran Shafi</b><div class="faint small">Related party · CIF 00088412</div></td><td>Brother of council member</td><td><span class="tag g">Routine</span></td><td class="r"><span class="score lo">18</span></td><td class="r"><span class="tag g">Cleared</span></td></tr>
+     </table>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Daily risk report <span>#248</span></h3>
+      <div class="rep"><div class="ring" style="--pct:56%"><div><b>5/9</b><span>Reviewed</span></div></div><div style="flex:1"><div class="stat"><span>Escalated to MLRO</span><b>2</b></div><div class="stat"><span>Cleared</span><b>5</b></div><div class="stat"><span>Avg. review time</span><b>2m 40s</b></div></div></div>
+      <div class="sched" style="margin-top:12px"><span class="dot"></span><div>Draft ready for 07:30 delivery<small>Compliance, Risk · email and in-app</small></div></div>
+     </div>
+     <div class="card">
+      <h3>Source health <span>Last crawl</span></h3>
+      <div class="srcs">
+       <div><span class="fav" style="background:#1d4ed8">D</span>Dawn<span class="n">31 articles</span><span class="tag g">OK</span></div>
+       <div><span class="fav" style="background:#b91c1c">ET</span>Express Tribune<span class="n">27 articles</span><span class="tag g">OK</span></div>
+       <div><span class="fav" style="background:#0f766e">BR</span>Business Recorder<span class="n">19 articles</span><span class="tag g">OK</span></div>
+       <div><span class="fav" style="background:#334155">NAB</span>NAB press releases<span class="n">retrying</span><span class="tag w">Delayed</span></div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div></body></html>

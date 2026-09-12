@@ -1,0 +1,57 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#059669}
+html.light{--bg:#f3f6f4;--panel:#ffffff;--panel-2:#eaf3ee;--line:rgba(6,45,30,.1);--soft:rgba(6,45,30,.05)}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15px;letter-spacing:-.02em;line-height:1.1}
+.logo i{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#047857,#0d9488);position:relative;flex:none}
+.logo i::after{content:"";position:absolute;inset:8px;border-radius:2px;background:#fff;opacity:.92}
+.logo small{display:block;font-size:9.5px;color:var(--faint);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:6px 18px 12px}
+.bell{width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--line);position:relative}
+.bell::after{content:"3";position:absolute;top:-4px;right:-4px;background:#dc2626;color:#fff;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:grid;place-items:center}
+.body{padding:0 18px 90px!important;gap:12px!important}
+.date{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font-size:23px;font-weight:800;letter-spacing:-.025em;margin-top:2px}
+.scan{background:linear-gradient(135deg,#065f46,#0f766e);color:#fff;border-radius:16px;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+.scan b{font-size:13.5px;display:block}
+.scan small{font-size:11px;opacity:.78;display:block;margin-top:3px}
+.scan .bar{background:rgba(255,255,255,.2);margin-top:10px}.scan .bar i{background:#a7f3d0}
+.scan .pct{font-size:24px;font-weight:800;letter-spacing:-.03em}
+.kpis{grid-template-columns:repeat(4,1fr)!important;gap:8px!important}
+.kpis .card{padding:10px 8px;text-align:center;border-radius:12px}
+.kpis .v{font-size:19px;font-weight:800;letter-spacing:-.02em}
+.kpis .l{font-size:9.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+.kpis .v.r{color:#b91c1c}.kpis .v.w{color:#b45309}
+.filters{display:flex;gap:6px;overflow:hidden}
+.filters .pill{padding:6px 12px;font-weight:600}
+.alert{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;grid-template-columns:auto 1fr;gap:12px}
+.alert.hi{border-left:3px solid #dc2626}
+.score{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;flex:none}
+.score.hi{background:#fee2e2;color:#b91c1c}.score.md{background:#fef3c7;color:#b45309}.score.lo{background:#dcfce7;color:#15803d}
+.alert b{display:block;font-size:13px}
+.alert .who{color:var(--muted);font-size:11px;margin-top:1px}
+.alert p{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.45}
+.alert .meta{display:flex;gap:6px;align-items:center;margin-top:8px;font-size:10.5px;color:var(--faint);flex-wrap:wrap}
+.sec{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:13.5px;margin-top:2px}
+.sec span{font-size:11px;color:var(--accent);font-weight:600}
+</style></head><body>
+<div class="site">
+ <div class="status"><span>9:41</span><div class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></div></div>
+ <div class="hdr"><div class="logo"><i></i><div>PEP Screening<small>BankIslami · Compliance</small></div></div><span class="bell"></span></div>
+ <div class="body">
+  <div><div class="date">Friday, 12 September</div><h1>Today&rsquo;s screening</h1></div>
+  <div class="scan"><div><b>Morning crawl complete</b><small>38 sources · 214 articles · finished 06:52</small><div class="bar"><i style="width:100%"></i></div></div><div class="pct">100%</div></div>
+  <div class="kpis">
+   <div class="card"><div class="v">214</div><div class="l">Articles</div></div>
+   <div class="card"><div class="v">9</div><div class="l">Matches</div></div>
+   <div class="card"><div class="v r">3</div><div class="l">High</div></div>
+   <div class="card"><div class="v w">4</div><div class="l">Review</div></div>
+  </div>
+  <div class="filters"><span class="pill on">All · 9</span><span class="pill">High · 3</span><span class="pill">Medium · 4</span><span class="pill">Low · 2</span></div>
+  <div class="sec">New matches <span>Sort: risk</span></div>
+  <div class="alert hi"><div class="score hi">86</div><div><b>Tariq Mehmood Khan</b><div class="who">Former provincial minister · Client since 2019</div><p>NAB widens inquiry into land allotments; name appears in two reports this morning.</p><div class="meta"><span class="tag r">Adverse media</span><span class="tag n">Dawn</span><span class="tag n">Tribune</span><span>· 07:10</span></div></div></div>
+  <div class="alert hi"><div class="score hi">79</div><div><b>Saleem Raza Chaudhry</b><div class="who">Director, import-export group · Corporate account</div><p>Customs case referred to court; company named alongside two associates.</p><div class="meta"><span class="tag r">Litigation</span><span class="tag n">Business Recorder</span><span>· 06:48</span></div></div></div>
+  <div class="alert"><div class="score md">54</div><div><b>Nadia Baig</b><div class="who">Board member, state utility · Related party</div><p>Audit objections raised over procurement; no personal allegation yet.</p><div class="meta"><span class="tag w">Watch</span><span class="tag n">The News</span><span>· 06:31</span></div></div></div>
+  <div class="alert"><div class="score lo">22</div><div><b>Ayesha Durrani</b><div class="who">Senior civil servant</div><p>Named in routine transfer notification only.</p><div class="meta"><span class="tag g">Low</span><span class="tag n">Geo</span></div></div></div>
+ </div>
+ <div class="tabs"><span class="on"><b></b>Today</span><span><b></b>Watchlist</span><span><b></b>Reports</span><span><b></b>Sources</span><span><b></b>Profile</span></div>
+</div></body></html>

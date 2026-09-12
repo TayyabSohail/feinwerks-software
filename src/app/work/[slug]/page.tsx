@@ -1,4 +1,10 @@
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check } from 'lucide-react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Quote,
+} from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -24,6 +30,7 @@ import {
   projects,
 } from '@/data/projects';
 import { getServiceBySlugLocalised } from '@/data/services';
+import { getTestimonials } from '@/data/testimonials';
 import { getDictionary } from '@/i18n/server';
 
 interface PageProps {
@@ -74,6 +81,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
     project.slug,
     dict.locale,
   );
+  const testimonial =
+    getTestimonials(dict.locale).find(
+      (item) => item.project === project.slug,
+    ) ?? null;
   const relatedServices = project.services
     .map((serviceSlug) => getServiceBySlugLocalised(serviceSlug, dict.locale))
     .filter((service): service is NonNullable<typeof service> =>
@@ -122,9 +133,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             </Reveal>
             <Reveal delay={0.45} className='mt-8 flex flex-wrap gap-3'>
               <span className='inline-flex h-12 items-center rounded-full border border-line px-5 text-sm text-muted-foreground'>
-                {project.anonymised
-                  ? t.anonymised
-                  : t.private}
+                {project.anonymised ? t.anonymised : t.private}
               </span>
             </Reveal>
           </div>
@@ -269,19 +278,61 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
       {/* Results */}
       <section className='fw-container py-16 lg:py-24'>
-        <Reveal>
-          <p className='fw-kicker'>{t.resultsKicker}</p>
-          <h2 className='fw-display mt-5 text-display-sm text-foreground'>
-            {t.resultsTitle}
-          </h2>
+        <Reveal className='fw-card fw-card-ink'>
+          <div className='grid lg:grid-cols-[0.85fr_1.15fr]'>
+            {/* What changed, in prose, plus the client's word on it */}
+            <div className='flex flex-col border-b border-white/10 p-7 sm:p-10 lg:border-b-0 lg:border-r lg:p-12'>
+              <p className='fw-kicker text-white/60 [&::after]:text-brand-2 [&::before]:text-brand-2'>
+                {t.resultsKicker}
+              </p>
+              <h2 className='fw-display mt-5 text-display-sm text-white'>
+                {t.resultsTitle}
+              </h2>
+              <p className='mt-6 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg'>
+                {project.resultsSummary}
+              </p>
+              {testimonial && (
+                <figure className='mt-10 border-t border-white/10 pt-8 lg:mt-auto'>
+                  <Quote className='h-6 w-6 text-brand-2' />
+                  <blockquote className='mt-4 max-w-lg text-base leading-relaxed text-white/85'>
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </blockquote>
+                  <figcaption className='mt-4 text-sm text-white/55'>
+                    <span className='font-medium text-white'>
+                      {testimonial.author}
+                    </span>{' '}
+                    &middot; {testimonial.company}
+                  </figcaption>
+                </figure>
+              )}
+            </div>
+
+            {/* The figures */}
+            <Stagger className='grid divide-y divide-white/10'>
+              {project.results.map((result, index) => (
+                <StaggerItem
+                  key={result.label}
+                  className='grid gap-5 p-7 sm:grid-cols-[2rem_minmax(11rem,0.5fr)_1fr] sm:items-start sm:gap-6 sm:p-10 lg:px-12'
+                >
+                  <span className='pt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-white/40'>
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <p className='fw-display text-4xl tabular-nums text-brand-2 sm:text-5xl'>
+                      {result.value}
+                    </p>
+                    <p className='mt-2 text-sm font-medium leading-snug text-white'>
+                      {result.label}
+                    </p>
+                  </div>
+                  <p className='text-sm leading-relaxed text-white/60 sm:pt-2 sm:text-[15px]'>
+                    {result.detail}
+                  </p>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
         </Reveal>
-        <Stagger className='mt-10 grid gap-px overflow-hidden rounded-none border border-line bg-line md:grid-cols-3'>
-          {project.outcomes.map((outcome) => (
-            <StaggerItem key={outcome} className='bg-background p-7 sm:p-8'>
-              <Metric text={outcome} />
-            </StaggerItem>
-          ))}
-        </Stagger>
       </section>
 
       {/* Stack + services */}
@@ -338,10 +389,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       </section>
 
       {/* Prev / next */}
-      <nav
-        aria-label={t.more}
-        className='fw-container py-16 lg:py-24'
-      >
+      <nav aria-label={t.more} className='fw-container py-16 lg:py-24'>
         <div className='grid gap-4 sm:grid-cols-2'>
           {previous && (
             <AdjacentLink
@@ -389,31 +437,6 @@ function Meta({
         {value}
       </p>
     </div>
-  );
-}
-
-/** Pulls a leading figure out of an outcome sentence and enlarges it. */
-function Metric({ text }: { text: string }) {
-  const match = text.match(
-    /^(<?[$£€]?\d[\d,.]*\s?(?:×|x|%|ms)?(?:\s?million|\s?M|\s?k)?\+?)\s*(.*)$/i,
-  );
-
-  if (!match) {
-    return (
-      <p className='text-base leading-relaxed text-foreground/85'>{text}</p>
-    );
-  }
-
-  const [, figure, rest] = match;
-  return (
-    <>
-      <span className='fw-display block text-4xl text-brand-text sm:text-5xl'>
-        {figure.trim()}
-      </span>
-      <span className='mt-3 block text-base leading-relaxed text-muted-foreground'>
-        {rest}
-      </span>
-    </>
   );
 }
 
