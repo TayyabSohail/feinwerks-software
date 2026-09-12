@@ -42,7 +42,7 @@ export const en = {
     kicker: 'Selected work',
     title: 'Products we have shipped',
     description:
-      'Twelve products in production: marketplaces that move real money, AI systems that answer from the right documents, internal tools that reconcile to the last unit.',
+      'Fourteen products in production: marketplaces that move real money, AI systems that answer from the right documents, internal tools that reconcile to the last unit.',
     all: 'All projects',
     view: 'View project',
     filterLabel: 'Filter projects',

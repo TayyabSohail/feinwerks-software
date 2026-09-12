@@ -63,7 +63,8 @@ export const servicesDe: Record<string, ServiceTranslation> = {
   },
   'ai-automation': {
     title: 'KI-Systeme & Automatisierung',
-    tagline: 'Agenten, Retrieval und Sprache, fundiert auf Ihren eigenen Daten.',
+    tagline:
+      'Agenten, Retrieval und Sprache, fundiert auf Ihren eigenen Daten.',
     summary:
       'Wir bauen KI-Funktionen, die im Produktivbetrieb bestehen: Retrieval-gestützte Assistenten, die aus Ihren Inhalten antworten, Multi-Agenten-Abläufe, die echte Aufgaben erledigen, und Sprachanwendungen in Echtzeit. Jedes System ist fundiert, beobachtbar und sicher genug für den Kundenkontakt.',
     deliverables: [

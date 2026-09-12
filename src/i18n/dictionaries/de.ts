@@ -42,7 +42,7 @@ export const de: Dictionary = {
     kicker: 'Ausgewählte Arbeiten',
     title: 'Produkte, die wir geliefert haben',
     description:
-      'Zwölf Produkte im Einsatz: Marktplätze, die echtes Geld bewegen, KI-Systeme, die aus den richtigen Dokumenten antworten, interne Werkzeuge, die bis zur letzten Einheit stimmen.',
+      'Vierzehn Produkte im Einsatz: Marktplätze, die echtes Geld bewegen, KI-Systeme, die aus den richtigen Dokumenten antworten, interne Werkzeuge, die bis zur letzten Einheit stimmen.',
     all: 'Alle Projekte',
     view: 'Projekt ansehen',
     filterLabel: 'Projekte filtern',

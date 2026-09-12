@@ -1554,7 +1554,11 @@ export const projects: Project[] = [
     ],
     category: 'Mobile',
     capabilities: ['Mobile', 'Full-Stack', 'AI', 'Cloud & Automation'],
-    services: ['mobile-app-development', 'product-engineering', 'ai-automation'],
+    services: [
+      'mobile-app-development',
+      'product-engineering',
+      'ai-automation',
+    ],
     industry: 'Banking / Compliance',
     year: '2025',
     featured: 7,
