@@ -87,11 +87,11 @@ export function Preloader() {
             duration: reduceMotion ? 0.3 : 0.9,
             ease: [0.76, 0, 0.24, 1],
           }}
-          className='fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black text-white'
+          className='fixed inset-0 z-[75] flex flex-col items-center justify-center bg-black text-white'
           aria-hidden='true'
           data-preloader
         >
-          <div className='flex overflow-visible font-display text-[clamp(2.5rem,9vw,7rem)] font-bold tracking-[0.08em]'>
+          <div className='flex overflow-hidden font-display text-[clamp(2.5rem,9vw,7rem)] font-bold tracking-[0.08em]'>
             {LETTERS.map((letter, index) => {
               const hangs = !reduceMotion && index === HINGE_LETTER_INDEX;
 

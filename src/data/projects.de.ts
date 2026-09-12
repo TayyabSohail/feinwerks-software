@@ -836,8 +836,75 @@ export const projectsDe: Record<string, ProjectTranslation> = {
       },
       {
         title: 'Stöbern',
+        caption: 'Karte und Suche der Webplattform, auf Touch abgestimmt.',
+      },
+    ],
+    techStackCategories: [
+      'Native Hülle',
+      'Frontend',
+      'Styling',
+      'Backend',
+      'Echtzeit',
+      'Zahlungen',
+      'Benachrichtigungen',
+      'Analytics',
+    ],
+  },
+  'unibid-mobile': {
+    tagline: 'Gebote für Studierendenwohnungen, überall dabei',
+    summary:
+      'Eine native iOS- und Android-Begleit-App für den Studierendenwohnungs-Marktplatz von UNIBID.',
+    description:
+      'Wir haben den Echtzeit-Marktplatz für Studierendenwohnungen von UNIBID auf iOS und Android erweitert. Studierende und Eltern können Angebote durchsuchen, Gebote abgeben, den Fortschritt ihres Mietvertrags verfolgen und auf Nachrichten antworten, ohne zum Desktop-Browser zurückzukehren.',
+    industry: 'Immobilientechnologie',
+    headline: { value: '2', label: 'App Stores aus einer Codebasis' },
+    problem:
+      'Wohnungsentscheidungen fallen nicht am Schreibtisch, und ein Browser-Tab bringt Studierende nicht zuverlässig zurück, wenn sich ein Angebot ändert oder Vermietende antworten.',
+    approach:
+      'Wir haben die UNIBID-Webplattform mit Capacitor verpackt und die zentralen Abläufe für Gebote, Nachrichten und Mietverträge für mobile Navigation, sichere Bereiche und Rückkehr über Benachrichtigungen verfeinert.',
+    outcomes: [
+      '1 gemeinsame Produkt-Codebasis für Web, iOS und Android.',
+      '2 App-Store-Releases, geliefert vom selben Produktteam.',
+      'Echtzeitgebote und Gespräche auch unterwegs verfügbar.',
+    ],
+    architecture:
+      'Capacitor hostet die UNIBID-Webanwendung in nativen iOS- und Android-Hüllen. Supabase und PostgreSQL bleiben das gemeinsame Backend, während WebSockets Gebote aktuell halten und native Integrationen den App-Lebenszyklus und Benachrichtigungs-Einstiege abdecken.',
+    keyFeatures: [
+      'Native iOS- und Android-Builds aus der gemeinsamen Produkt-Codebasis',
+      'Live-Gebote und Aktualisierungen von Angeboten',
+      'Touch-orientierte Abläufe für Angebote, Nachrichten und Mietverträge',
+      'Benachrichtigungs-Links zum passenden Gespräch oder Angebot',
+      'Sitzungen bleiben zwischen App-Starts erhalten',
+      'Mobile Layouts mit Beachtung sicherer Bereiche',
+    ],
+    challenges: [
+      {
+        challenge:
+          'Ein Gebot kann sich ändern, während die App im Hintergrund ist.',
+        solution:
+          'Beim Fortsetzen verbindet sich die App erneut und gleicht den Angebotszustand ab, sodass Nutzende zur verbindlichen Gebotshistorie zurückkehren.',
+      },
+      {
+        challenge:
+          'Mobile Nutzende brauchen die Geschwindigkeit des Webprodukts, ohne dass Browser-Chrome im Weg steht.',
+        solution:
+          'Wir haben eine native Hülle, mobile Navigation und Layouts für sichere Bereiche eingesetzt und zugleich die bewährten Marktplatz-Abläufe beibehalten.',
+      },
+    ],
+    gallery: [
+      {
+        title: 'Dashboard für Studierende',
         caption:
-          'Karte und Suche der Webplattform, auf Touch abgestimmt.',
+          'Gebote, Schritte zum Mietvertrag und Dienste in einer fokussierten mobilen Ansicht.',
+      },
+      {
+        title: 'Nachrichten',
+        caption:
+          'Gespräche mit Vermietenden und Anbietern, bereit über eine Benachrichtigung.',
+      },
+      {
+        title: 'Angebote durchsuchen',
+        caption: 'Suche und Live-Angebote, für Touch optimiert.',
       },
     ],
     techStackCategories: [
