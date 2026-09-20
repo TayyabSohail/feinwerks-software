@@ -2,7 +2,7 @@ import { paths } from '@/constants/paths';
 import { env } from '@/env';
 
 /**
- * Accepts "username" or "username/event-slug" only. Rejects API keys
+ * Asccepts "username" or "username/event-slug" only. Rejects API keys
  * (cal_live_..., cal_test_...), and tolerates a pasted full cal.com URL.
  */
 function parseCalHandle(value: string | undefined) {
