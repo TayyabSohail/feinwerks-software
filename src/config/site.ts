@@ -19,12 +19,12 @@ const calHandle = parseCalHandle(env.NEXT_PUBLIC_CAL_LINK);
  * header, footer, contact page, legal pages, structured data and metadata.
  */
 export const siteConfig = {
-  name: 'Feinwerks Software',
-  shortName: 'Feinwerks',
-  legalName: 'Feinwerks Software',
+  name: 'Feinwerk Software',
+  shortName: 'Feinwerk',
+  legalName: 'Feinwerk Software',
   tagline: 'Products engineered from MVP to scale',
   description:
-    'Feinwerks Software designs, builds and maintains web platforms, AI systems and cloud automation. Written scope, fixed or custom quote, committed launch date, support after launch.',
+    'Feinwerk Software designs, builds and maintains web platforms, AI systems and cloud automation. Written scope, fixed or custom quote, committed launch date, support after launch.',
   url: env.NEXT_PUBLIC_APP_URL,
   founded: 2024,
   /**

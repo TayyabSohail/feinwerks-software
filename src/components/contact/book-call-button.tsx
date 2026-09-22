@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
 /** One namespace for every modal trigger, so the iframe is shared. */
-const NAMESPACE = 'feinwerks-book';
+const NAMESPACE = 'feinwerk-book';
 
 /** Matches `--brand` in globals.css (emerald-500). */
 const BRAND = '#10b981';

@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-const LETTERS = 'FEINWERKS'.split('');
+const LETTERS = 'FEINWERK'.split('');
 const HINGE_LETTER_INDEX = LETTERS.length - 1;
 const DURATION_MS = 2300;
 const REDUCED_DURATION_MS = 600;
@@ -75,7 +75,7 @@ export function Preloader() {
     <AnimatePresence
       onExitComplete={() => {
         document.documentElement.dataset.preloaderComplete = 'true';
-        window.dispatchEvent(new Event('feinwerks:preloader-complete'));
+        window.dispatchEvent(new Event('feinwerk:preloader-complete'));
       }}
     >
       {visible && (

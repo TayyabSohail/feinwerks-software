@@ -49,7 +49,7 @@ export default function OpenGraphImage() {
           </svg>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span style={{ fontSize: 30, fontWeight: 700, letterSpacing: -1 }}>
-              Feinwerks
+              Feinwerk
             </span>
             <span
               style={{

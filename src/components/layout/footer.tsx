@@ -133,7 +133,7 @@ export function Footer({ dict }: FooterProps) {
             className='fill-ink/85 font-display font-bold uppercase'
             style={{ fontSize: 150 }}
           >
-            Feinwerks
+            Feinwerk
           </text>
         </svg>
       </div>

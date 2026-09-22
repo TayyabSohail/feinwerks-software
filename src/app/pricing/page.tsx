@@ -14,7 +14,7 @@ import { getDictionary } from '@/i18n/server';
 export const metadata: Metadata = {
   title: 'Pricing',
   description:
-    'Six ways to work with Feinwerks Software, from strategy and maintenance to dedicated teams and full product builds. Every plan includes a written scope and support after launch.',
+    'Six ways to work with Feinwerk Software, from strategy and maintenance to dedicated teams and full product builds. Every plan includes a written scope and support after launch.',
   alternates: { canonical: paths.pricing },
 };
 

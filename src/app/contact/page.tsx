@@ -10,7 +10,7 @@ import { getDictionary } from '@/i18n/server';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Tell us about your project. Feinwerks Software replies within one business day from Islamabad, Pakistan and Fellbach, Germany.',
+    'Tell us about your project. Feinwerk Software replies within one business day from Islamabad, Pakistan and Fellbach, Germany.',
   alternates: { canonical: paths.contact },
 };
 
